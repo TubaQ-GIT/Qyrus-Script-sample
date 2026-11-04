@@ -22,7 +22,7 @@ jobs:
 
       - name: Setup Qyrus Node CLI
         run: |
-          git clone -b auth-master-with-ssl https://github.com/QQyrus/node-cli.git
+          git clone -b auth-master-with-ssl https://${{ secrets.pat }}@github.com/QQyrus/node-cli.git
           cd node-cli
           npm install
 
