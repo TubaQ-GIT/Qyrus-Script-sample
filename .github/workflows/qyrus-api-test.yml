@@ -30,10 +30,14 @@ jobs:
           QYRUS_API_KEY: ${{ secrets.QYRUS_API_KEY }}
         run: |
           cd node-cli
-          node ./index.cjs apiEnterprise \
-            --executionType "functional" \
+          node ./index.cjs web \
             --apiKey "$QYRUS_API_KEY" \
             --teamName "Qyrus Demos" \
-            --projectName "Demo API" \
-            --suiteName "Suite-2" \
-            --envName ""
+            --projectName "Tuba_MCP_Project" \
+            --suiteName "Sample_Web_Module" \
+            --parameterFileSource "NONE" \
+            --browserOS "windows" \
+            --browser "Chrome" \
+            --onErrorContinue "true" \
+            --emailId "tubaq@qyrus.com" \
+            --env ""
