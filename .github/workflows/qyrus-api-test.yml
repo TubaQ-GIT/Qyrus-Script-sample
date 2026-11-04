@@ -33,4 +33,4 @@ jobs:
             --apiKey "$QYRUS_API_KEY" \
             --teamName "Qyrus Demos" \
             --projectName "Demo API" \
-            --suiteName "Suite-2"
+            --suiteName "DummyLoanAPI Suite"
