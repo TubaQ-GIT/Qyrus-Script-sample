@@ -1,0 +1,39 @@
+name: Qyrus API Test Execution
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  run-api-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Setup Qyrus Node CLI
+        run: |
+          git clone -b auth-master-with-ssl https://github.com/QQyrus/node-cli.git
+          cd node-cli
+          npm install
+
+      - name: Execute API Tests
+        env:
+          QYRUS_API_KEY: ${{ secrets.key }}
+        run: |
+          cd node-cli
+          node ./index.cjs qapi \
+            --executionType "functional" \
+            --apiKey "$key" \
+            --workspaceName "Demo API" \
+            --suiteName "Suite-2" \
+            --envName ""
