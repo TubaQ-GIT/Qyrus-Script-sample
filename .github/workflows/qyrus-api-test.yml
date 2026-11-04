@@ -28,12 +28,12 @@ jobs:
 
       - name: Execute API Tests
         env:
-          QYRUS_API_KEY: ${{ secrets.key }}
+          QYRUS_API_KEY: ${{ secrets.KEY }}
         run: |
           cd node-cli
           node ./index.cjs qapi \
             --executionType "functional" \
-            --apiKey "$key" \
+            --apiKey "$KEY" \
             --workspaceName "Demo API" \
             --suiteName "Suite-2" \
             --envName ""
