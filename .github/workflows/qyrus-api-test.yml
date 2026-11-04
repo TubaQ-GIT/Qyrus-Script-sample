@@ -28,7 +28,7 @@ jobs:
 
       - name: Execute API Tests
         env:
-          QYRUS_API_KEY: ${{ secrets.⁠QYRUS_API_KEY }}
+         QYRUS_API_KEY: ${{ secrets['QYRUS_API_KEY'] }}
         run: |
           cd node-cli
           node ./index.cjs qapi \
