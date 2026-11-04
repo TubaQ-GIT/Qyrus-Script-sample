@@ -12,29 +12,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
 
-      - name: Install Dependencies
+      - name: Clone Qyrus CLI
         run: |
-          cd node-cli
+          git clone https://github.com/QQyrus/node-cli qyrus-cli
+          cd qyrus-cli
           npm install
 
       - name: Execute Enterprise API Tests
         env:
           QYRUS_API_KEY: ${{ secrets.QYRUS_API_KEY }}
         run: |
-          cd node-cli
+          cd qyrus-cli
           node ./index.cjs apiEnterprise \
             --executionType "functional" \
             --apiKey "$QYRUS_API_KEY" \
             --teamName "Qyrus Demos" \
             --projectName "Demo API" \
-            --suiteName "Suite-2" \
-            --envName ""
-         
+            --suiteName "Suite-2"
