@@ -22,18 +22,18 @@ jobs:
 
       - name: Setup Qyrus Node CLI
         run: |
-          git clone -b auth-master-with-ssl https://${{ secrets.PAT }}@github.com/QQyrus/node-cli.git
+          git clone -b auth-master-with-ssl https://${{ secrets.GH_PAT }}@github.com/QQyrus/node-cli.git
           cd node-cli
           npm install
 
       - name: Execute API Tests
         env:
-          QYRUS_API_KEY: ${{ secrets.KEY }}
+          QYRUS_API_KEY: ${{ secrets.⁠QYRUS_API_KEY }}
         run: |
           cd node-cli
           node ./index.cjs qapi \
             --executionType "functional" \
-            --apiKey "$key" \
+            --apiKey "$⁠QYRUS_API_KEY" \
             --workspaceName "Demo API" \
             --suiteName "Suite-2" \
             --envName ""
